@@ -1,0 +1,10 @@
+D:\Программы\KP\KP\KP\bin\Debug\KP.exe.config
+D:\Программы\KP\KP\KP\bin\Debug\KP.exe
+D:\Программы\KP\KP\KP\bin\Debug\KP.pdb
+D:\Программы\KP\KP\KP\obj\Debug\KP.csprojAssemblyReference.cache
+D:\Программы\KP\KP\KP\obj\Debug\KP.Form1.resources
+D:\Программы\KP\KP\KP\obj\Debug\KP.Properties.Resources.resources
+D:\Программы\KP\KP\KP\obj\Debug\KP.csproj.GenerateResource.cache
+D:\Программы\KP\KP\KP\obj\Debug\KP.csproj.CoreCompileInputs.cache
+D:\Программы\KP\KP\KP\obj\Debug\KP.exe
+D:\Программы\KP\KP\KP\obj\Debug\KP.pdb
