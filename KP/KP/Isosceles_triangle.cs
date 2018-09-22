@@ -15,13 +15,7 @@ namespace KP
             Angle = angle;
         }
 
-        public override double Square()
-        {
-            return A * A / 2 * Math.Sin(Angle);
-        }
-        public override double Perimetr()
-        {
-            return A + B + Math.Sqrt(A * A + B * B - 2 * A * B * Math.Cos(Angle));
-        }
+        public override double Square() => A * A / 2 * Math.Sin(Angle);
+        public override double Perimetr() => A + B + Math.Sqrt(A * A + B * B - 2 * A * B * Math.Cos(Angle));
     }
 }
