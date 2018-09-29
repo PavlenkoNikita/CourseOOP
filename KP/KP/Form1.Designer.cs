@@ -31,9 +31,9 @@
             this.btn_OutputResult = new System.Windows.Forms.Button();
             this.rdBtn_Equilateral = new System.Windows.Forms.RadioButton();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.rdBtn_Isosceles = new System.Windows.Forms.RadioButton();
-            this.rdBtn_Right = new System.Windows.Forms.RadioButton();
             this.rdBtn_Arbitrary = new System.Windows.Forms.RadioButton();
+            this.rdBtn_Right = new System.Windows.Forms.RadioButton();
+            this.rdBtn_Isosceles = new System.Windows.Forms.RadioButton();
             this.txtBtn_A = new System.Windows.Forms.TextBox();
             this.txtBtn_B = new System.Windows.Forms.TextBox();
             this.txtBtn_Angle = new System.Windows.Forms.TextBox();
@@ -62,7 +62,6 @@
             this.rdBtn_Equilateral.Name = "rdBtn_Equilateral";
             this.rdBtn_Equilateral.Size = new System.Drawing.Size(111, 21);
             this.rdBtn_Equilateral.TabIndex = 4;
-            this.rdBtn_Equilateral.TabStop = true;
             this.rdBtn_Equilateral.Text = "Правильный";
             this.rdBtn_Equilateral.UseVisualStyleBackColor = true;
             this.rdBtn_Equilateral.Click += new System.EventHandler(this.TriangleTypeChanged);
@@ -80,33 +79,10 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Вид треугольника";
             // 
-            // rdBtn_Isosceles
-            // 
-            this.rdBtn_Isosceles.AutoSize = true;
-            this.rdBtn_Isosceles.Location = new System.Drawing.Point(16, 68);
-            this.rdBtn_Isosceles.Name = "rdBtn_Isosceles";
-            this.rdBtn_Isosceles.Size = new System.Drawing.Size(143, 21);
-            this.rdBtn_Isosceles.TabIndex = 5;
-            this.rdBtn_Isosceles.TabStop = true;
-            this.rdBtn_Isosceles.Text = "Равнобедренный";
-            this.rdBtn_Isosceles.UseVisualStyleBackColor = true;
-            this.rdBtn_Isosceles.Click += new System.EventHandler(this.TriangleTypeChanged);
-            // 
-            // rdBtn_Right
-            // 
-            this.rdBtn_Right.AutoSize = true;
-            this.rdBtn_Right.Location = new System.Drawing.Point(16, 105);
-            this.rdBtn_Right.Name = "rdBtn_Right";
-            this.rdBtn_Right.Size = new System.Drawing.Size(133, 21);
-            this.rdBtn_Right.TabIndex = 6;
-            this.rdBtn_Right.TabStop = true;
-            this.rdBtn_Right.Text = "Прямоугольный";
-            this.rdBtn_Right.UseVisualStyleBackColor = true;
-            this.rdBtn_Right.Click += new System.EventHandler(this.TriangleTypeChanged);
-            // 
             // rdBtn_Arbitrary
             // 
             this.rdBtn_Arbitrary.AutoSize = true;
+            this.rdBtn_Arbitrary.Checked = true;
             this.rdBtn_Arbitrary.Location = new System.Drawing.Point(16, 142);
             this.rdBtn_Arbitrary.Name = "rdBtn_Arbitrary";
             this.rdBtn_Arbitrary.Size = new System.Drawing.Size(126, 21);
@@ -115,6 +91,28 @@
             this.rdBtn_Arbitrary.Text = "Произвольный";
             this.rdBtn_Arbitrary.UseVisualStyleBackColor = true;
             this.rdBtn_Arbitrary.Click += new System.EventHandler(this.TriangleTypeChanged);
+            // 
+            // rdBtn_Right
+            // 
+            this.rdBtn_Right.AutoSize = true;
+            this.rdBtn_Right.Location = new System.Drawing.Point(16, 105);
+            this.rdBtn_Right.Name = "rdBtn_Right";
+            this.rdBtn_Right.Size = new System.Drawing.Size(133, 21);
+            this.rdBtn_Right.TabIndex = 6;
+            this.rdBtn_Right.Text = "Прямоугольный";
+            this.rdBtn_Right.UseVisualStyleBackColor = true;
+            this.rdBtn_Right.Click += new System.EventHandler(this.TriangleTypeChanged);
+            // 
+            // rdBtn_Isosceles
+            // 
+            this.rdBtn_Isosceles.AutoSize = true;
+            this.rdBtn_Isosceles.Location = new System.Drawing.Point(16, 68);
+            this.rdBtn_Isosceles.Name = "rdBtn_Isosceles";
+            this.rdBtn_Isosceles.Size = new System.Drawing.Size(143, 21);
+            this.rdBtn_Isosceles.TabIndex = 5;
+            this.rdBtn_Isosceles.Text = "Равнобедренный";
+            this.rdBtn_Isosceles.UseVisualStyleBackColor = true;
+            this.rdBtn_Isosceles.Click += new System.EventHandler(this.TriangleTypeChanged);
             // 
             // txtBtn_A
             // 

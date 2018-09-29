@@ -50,9 +50,21 @@ namespace KP
                 b = Convert.ToDouble(txtBtn_B.Text);
 
                 Right_triangle right = new Right_triangle(a, b);
-                MessageBox.Show($"Равнобедренный треугольник со катетами {a} и {b}." +
+                MessageBox.Show($"Равнобедренный треугольник с катетами {a} и {b}." +
                                 $"\nПериметр: {right.Perimetr()} " +
                                 $"\nПлощадь: {right.Square()}",
+                                "Результат", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else if (rdBtn_Arbitrary.Checked)
+            {
+                a = Convert.ToDouble(txtBtn_A.Text);
+                b = Convert.ToDouble(txtBtn_B.Text);
+                angle = Convert.ToDouble(txtBtn_Angle.Text);
+
+                Arbitrary_triangle arbitrary = new Arbitrary_triangle(a, b, angle);
+                MessageBox.Show($"Произвольный треугольник со сторонами {a} и {b} и углом между ними {angle}°." +
+                                $"\nПериметр: {arbitrary.Perimetr()} " +
+                                $"\nПлощадь: {arbitrary.Square()}",
                                 "Результат", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
