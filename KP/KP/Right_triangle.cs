@@ -10,11 +10,10 @@ namespace KP
     {
         public Right_triangle(double a, double b) : base (a, b, 90) 
         {
-            A = a;
-            B = b;
+            C = Math.Sqrt(A * A + B * B);
         }
 
         public override double Square() => A * B / 2;
-        public override double Perimetr() => A + B + Math.Sqrt(A * A + B * B);
+        public override double Perimetr() => A + B + C;
     }
 }
