@@ -8,11 +8,10 @@ namespace KP
 {
     class Right_triangle : Triangle
     {
-        public Right_triangle(double a, double b, double angle) : base (a, b, angle) 
+        public Right_triangle(double a, double b) : base (a, b, 90) 
         {
             A = a;
             B = b;
-            Angle = angle;
         }
 
         public override double Square() => A * B / 2;

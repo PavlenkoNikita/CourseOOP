@@ -8,11 +8,12 @@ namespace KP
 {
     class Equilateral_triangle : Triangle
     {
-        public Equilateral_triangle(double a, double b, double angle) : base(a, b, angle)
+        public Equilateral_triangle(double a) : base(a, a, 60)
         {
             A = a;
-            B = b;
-            Angle = angle;
+            B = a;
+            C = a;
+            Angle = 60;
         }
 
         public override double Square() => Math.Sqrt(3) * A * A / 4;

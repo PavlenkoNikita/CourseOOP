@@ -8,9 +8,15 @@ namespace KP
 {
     abstract class Triangle
     {
-        public double A { get; protected set; }
-        public double B { get; protected set; }
-        public double Angle { get; protected set; }
+        private double angle;
+
+        protected double A { get; set; }
+        protected double B { get; set; }
+        protected double C { get; set; }
+        protected double Angle { get { return angle.ToRadians(); }
+                                 set {angle = value; } }
+
+        public Triangle() { }
          
         public Triangle(double a, double b, double angle)
         {
@@ -21,6 +27,5 @@ namespace KP
 
         public abstract double Square();
         public abstract double Perimetr();
-
     }
 }
