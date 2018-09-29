@@ -17,17 +17,44 @@ namespace KP
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void btn_OutputResult_Click(object sender, EventArgs e)
         {
-            double a = Convert.ToDouble(txtBtn_A.Text);
-            double b = Convert.ToDouble(txtBtn_B.Text);
-            double angle = Convert.ToDouble(txtBtn_Angle.Text);
+            double a; 
+            double b; 
+            double angle;
 
-            Right_triangle right = new Right_triangle(a, b, angle);
-            Isosceles_triangle isosceles = new Isosceles_triangle(a, b, angle);
-            Equilateral_triangle equilateral = new Equilateral_triangle(a, b, angle);
+            if (rdBtn_Equilateral.Checked)
+            {
+                a = Convert.ToDouble(txtBtn_A.Text);
 
+                Equilateral_triangle equilateral = new Equilateral_triangle(a);
+                MessageBox.Show($"Равносторонний треугольник со стороной {a}." +
+                                $"\nПериметр: {equilateral.Perimetr()} " +
+                                $"\nПлощадь: {equilateral.Square()}", 
+                                "Результат", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else if (rdBtn_Isosceles.Checked)
+            {
+                a = Convert.ToDouble(txtBtn_A.Text);
+                angle = Convert.ToDouble(txtBtn_Angle.Text);
 
+                Isosceles_triangle isosceles = new Isosceles_triangle(a, angle);
+                MessageBox.Show($"Равнобедренный треугольник со сторонами {a} и углом между ними {angle}°." +
+                                $"\nПериметр: {isosceles.Perimetr()} " +
+                                $"\nПлощадь: {isosceles.Square()}",
+                                "Результат", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else if (rdBtn_Right.Checked)
+            {
+                a = Convert.ToDouble(txtBtn_A.Text);
+                b = Convert.ToDouble(txtBtn_B.Text);
+
+                Right_triangle right = new Right_triangle(a, b);
+                MessageBox.Show($"Равнобедренный треугольник со катетами {a} и {b}." +
+                                $"\nПериметр: {right.Perimetr()} " +
+                                $"\nПлощадь: {right.Square()}",
+                                "Результат", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
 
         private void TriangleTypeChanged(object sender, EventArgs e)

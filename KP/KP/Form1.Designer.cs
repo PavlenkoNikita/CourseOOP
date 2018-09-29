@@ -53,7 +53,7 @@
             this.btn_OutputResult.TabIndex = 3;
             this.btn_OutputResult.Text = "Вычислить";
             this.btn_OutputResult.UseVisualStyleBackColor = true;
-            this.btn_OutputResult.Click += new System.EventHandler(this.button1_Click);
+            this.btn_OutputResult.Click += new System.EventHandler(this.btn_OutputResult_Click);
             // 
             // rdBtn_Equilateral
             // 
