@@ -18,3 +18,13 @@ C:\Users\Ilya\source\repos\CourseOOP\KP\KP\obj\Debug\KP.pdb
 C:\Users\Ilya\source\repos\CourseOOP\KP\KP\bin\Debug\KP.exe.config
 C:\Users\Ilya\source\repos\CourseOOP\KP\KP\bin\Debug\KP.exe
 C:\Users\Ilya\source\repos\CourseOOP\KP\KP\bin\Debug\KP.pdb
+D:\Программы\CourseOOP\KP\KP\bin\Debug\KP.exe.config
+D:\Программы\CourseOOP\KP\KP\bin\Debug\KP.exe
+D:\Программы\CourseOOP\KP\KP\bin\Debug\KP.pdb
+D:\Программы\CourseOOP\KP\KP\obj\Debug\KP.csprojAssemblyReference.cache
+D:\Программы\CourseOOP\KP\KP\obj\Debug\KP.Form1.resources
+D:\Программы\CourseOOP\KP\KP\obj\Debug\KP.Properties.Resources.resources
+D:\Программы\CourseOOP\KP\KP\obj\Debug\KP.csproj.GenerateResource.cache
+D:\Программы\CourseOOP\KP\KP\obj\Debug\KP.csproj.CoreCompileInputs.cache
+D:\Программы\CourseOOP\KP\KP\obj\Debug\KP.exe
+D:\Программы\CourseOOP\KP\KP\obj\Debug\KP.pdb

@@ -8,5 +8,22 @@ namespace KP
 {
     class Picture
     {
+        public List<Triangle> Array { private set; get; }
+
+        public Picture()
+        {
+            Array = new List<Triangle>();
+        }
+
+        public void Add(Triangle triangle) => Array.Add(triangle);
+
+        public void Remove(Triangle triangle) => Array.Remove(triangle);
+
+        public void Show()
+        {
+            
+        }
+
+        public double getSquare() => Array.Select(x => x.Square()).Sum();
     }
 }

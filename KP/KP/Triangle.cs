@@ -10,6 +10,7 @@ namespace KP
     {
         private double angle;
 
+        protected string Name { get; set; }
         protected double A { get; set; }
         protected double B { get; set; }
         protected double C { get; set; }

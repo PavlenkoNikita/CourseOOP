@@ -41,6 +41,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.listBox1 = new System.Windows.Forms.ListBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -58,10 +59,12 @@
             // rdBtn_Equilateral
             // 
             this.rdBtn_Equilateral.AutoSize = true;
+            this.rdBtn_Equilateral.Checked = true;
             this.rdBtn_Equilateral.Location = new System.Drawing.Point(16, 31);
             this.rdBtn_Equilateral.Name = "rdBtn_Equilateral";
             this.rdBtn_Equilateral.Size = new System.Drawing.Size(111, 21);
             this.rdBtn_Equilateral.TabIndex = 4;
+            this.rdBtn_Equilateral.TabStop = true;
             this.rdBtn_Equilateral.Text = "Правильный";
             this.rdBtn_Equilateral.UseVisualStyleBackColor = true;
             this.rdBtn_Equilateral.Click += new System.EventHandler(this.TriangleTypeChanged);
@@ -82,12 +85,10 @@
             // rdBtn_Arbitrary
             // 
             this.rdBtn_Arbitrary.AutoSize = true;
-            this.rdBtn_Arbitrary.Checked = true;
             this.rdBtn_Arbitrary.Location = new System.Drawing.Point(16, 142);
             this.rdBtn_Arbitrary.Name = "rdBtn_Arbitrary";
             this.rdBtn_Arbitrary.Size = new System.Drawing.Size(126, 21);
             this.rdBtn_Arbitrary.TabIndex = 7;
-            this.rdBtn_Arbitrary.TabStop = true;
             this.rdBtn_Arbitrary.Text = "Произвольный";
             this.rdBtn_Arbitrary.UseVisualStyleBackColor = true;
             this.rdBtn_Arbitrary.Click += new System.EventHandler(this.TriangleTypeChanged);
@@ -120,6 +121,7 @@
             this.txtBtn_A.Name = "txtBtn_A";
             this.txtBtn_A.Size = new System.Drawing.Size(68, 22);
             this.txtBtn_A.TabIndex = 6;
+            this.txtBtn_A.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBtn_A_KeyPress);
             // 
             // txtBtn_B
             // 
@@ -127,6 +129,7 @@
             this.txtBtn_B.Name = "txtBtn_B";
             this.txtBtn_B.Size = new System.Drawing.Size(68, 22);
             this.txtBtn_B.TabIndex = 7;
+            this.txtBtn_B.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBtn_A_KeyPress);
             // 
             // txtBtn_Angle
             // 
@@ -134,6 +137,7 @@
             this.txtBtn_Angle.Name = "txtBtn_Angle";
             this.txtBtn_Angle.Size = new System.Drawing.Size(68, 22);
             this.txtBtn_Angle.TabIndex = 8;
+            this.txtBtn_Angle.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBtn_A_KeyPress);
             // 
             // label1
             // 
@@ -177,18 +181,29 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Ввод";
             // 
+            // listBox1
+            // 
+            this.listBox1.FormattingEnabled = true;
+            this.listBox1.ItemHeight = 16;
+            this.listBox1.Location = new System.Drawing.Point(12, 206);
+            this.listBox1.Name = "listBox1";
+            this.listBox1.Size = new System.Drawing.Size(378, 116);
+            this.listBox1.TabIndex = 13;
+            this.listBox1.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.listBox1_PreviewKeyDown);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(406, 206);
+            this.ClientSize = new System.Drawing.Size(406, 410);
+            this.Controls.Add(this.listBox1);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btn_OutputResult);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "OOP";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
@@ -211,6 +226,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.ListBox listBox1;
     }
 }
 
