@@ -13,74 +13,119 @@ namespace KP
 {
     public partial class Form1 : Form
     {
-        private int counter;
+        private int counter = 0;
+        string nameTriangle = "";
         private Regex format = new Regex(@"^\d+,?\d*$");
+        Picture picture = new Picture();
 
         public Form1()
         {
             InitializeComponent();
-            counter = 0;
-            txtBtn_B.Enabled = false;
-            txtBtn_Angle.Enabled = false;
         }
 
         private void btn_OutputResult_Click(object sender, EventArgs e)
         {
-            if (txtBtn_A.Text == "0" || txtBtn_B.Text == "0")
-            {
-                return;
-            }
+            if (!CheckInput()) return;
+
             double a; 
             double b; 
             double angle;
 
-            
-            string nameTriangle = "Треугольник " + (++counter) + " ";
+            nameTriangle = "Треугольник " + (++counter) + " ";
                         
             if (rdBtn_Equilateral.Checked)
             {
                 a = Convert.ToDouble(txtBtn_A.Text);
-                listBox1.Items.Add(nameTriangle + "(Правильный)");
-                Equilateral_triangle equilateral = new Equilateral_triangle(nameTriangle, a);
-                MessageBox.Show($"Равносторонний треугольник со стороной {a}." +
-                                $"\nПериметр: {equilateral.Perimetr()} " +
-                                $"\nПлощадь: {equilateral.Square()}", 
-                                "Результат", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                OutputCalcResult(new Equilateral_triangle(nameTriangle, a));
             }
             else if (rdBtn_Isosceles.Checked)
             {
                 a = Convert.ToDouble(txtBtn_A.Text);
                 angle = Convert.ToDouble(txtBtn_Angle.Text);
-                listBox1.Items.Add(nameTriangle + "(Равнобедренный)");
-                Isosceles_triangle isosceles = new Isosceles_triangle(nameTriangle, a, angle);
-                MessageBox.Show($"Равнобедренный треугольник со сторонами {a} и углом между ними {angle}°." +
-                                $"\nПериметр: {isosceles.Perimetr()} " +
-                                $"\nПлощадь: {isosceles.Square()}",
-                                "Результат", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                OutputCalcResult(new Isosceles_triangle(nameTriangle, a, angle));
             }
             else if (rdBtn_Right.Checked)
             {
                 a = Convert.ToDouble(txtBtn_A.Text);
                 b = Convert.ToDouble(txtBtn_B.Text);
-                listBox1.Items.Add(nameTriangle + "(Прямоугольный)");
-                Right_triangle right = new Right_triangle(nameTriangle, a, b);
-                MessageBox.Show($"Равнобедренный треугольник с катетами {a} и {b}." +
-                                $"\nПериметр: {right.Perimetr()} " +
-                                $"\nПлощадь: {right.Square()}",
-                                "Результат", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                OutputCalcResult(new Right_triangle(nameTriangle, a, b));
             }
             else if (rdBtn_Arbitrary.Checked)
             {
                 a = Convert.ToDouble(txtBtn_A.Text);
                 b = Convert.ToDouble(txtBtn_B.Text);
                 angle = Convert.ToDouble(txtBtn_Angle.Text);
-                listBox1.Items.Add(nameTriangle + "(Произвольный)");
-                Arbitrary_triangle arbitrary = new Arbitrary_triangle(nameTriangle, a, b, angle);
-                MessageBox.Show($"Произвольный треугольник со сторонами {a} и {b} и углом между ними {angle}°." +
-                                $"\nПериметр: {arbitrary.Perimetr()} " +
-                                $"\nПлощадь: {arbitrary.Square()}",
-                                "Результат", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                OutputCalcResult(new Arbitrary_triangle(nameTriangle, a, b, angle));
             }
+
+            label_Sum.Text = picture.SumSquare().ToString("#.##");
+
+            Clear();
+        }
+
+        private bool CheckInput()
+        {
+            double check;
+
+            if (!double.TryParse(txtBtn_A.Text, out check) || !double.TryParse(txtBtn_B.Text, out check) || !double.TryParse(txtBtn_Angle.Text, out check))
+            {
+                MessageBox.Show("Некорректное значение при вводе.", "Ошибка", MessageBoxButtons.OKCancel, MessageBoxIcon.Error);
+                Clear();
+                return false;
+            }
+
+            if (txtBtn_A.Text == "0" || txtBtn_B.Text == "0")
+            {
+                MessageBox.Show("Значение длины должно быть больше 0.", "Ошибка", MessageBoxButtons.OKCancel, MessageBoxIcon.Error);
+                Clear();
+                return false;
+            }
+
+            if (Convert.ToDouble(txtBtn_Angle.Text) >= 180)
+            {
+                MessageBox.Show("Значение величины угла должно быть меньше 180.", "Ошибка", MessageBoxButtons.OKCancel, MessageBoxIcon.Error);
+                txtBtn_Angle.Clear();
+                return false;
+            }
+
+            return true;
+        }
+
+        private void OutputCalcResult(Triangle triangle)
+        {
+            picture.Add(triangle);
+
+            string triangleInfo = "";
+
+            if(triangle is Equilateral_triangle)
+            {
+                listBox1.Items.Add(nameTriangle + "(Правильный)");
+                triangleInfo = "Равносторонний треугольник со стороной " + txtBtn_A.Text + ".";
+            }
+            else if(triangle is Isosceles_triangle)
+            {
+                listBox1.Items.Add(nameTriangle + "(Равнобедренный)");
+                triangleInfo = "Равнобедренный треугольник со сторонами " + txtBtn_A.Text + " и углом между ними " + txtBtn_Angle.Text + "°.";
+            }
+            else if(triangle is Right_triangle)
+            {
+                listBox1.Items.Add(nameTriangle + "(Прямоугольный)");
+                triangleInfo = "Прямоугольный треугольник с катетами " + txtBtn_A.Text + " и " + txtBtn_B.Text + ".";
+            }
+            else
+            {
+                listBox1.Items.Add(nameTriangle + "(Произвольный)");
+                triangleInfo = "Произвольный треугольник со сторонами" + txtBtn_A.Text + " и " + txtBtn_B.Text + "." + " и углом между ними " + txtBtn_Angle.Text + "°.";
+            }
+
+            MessageBox.Show( $"{triangleInfo} \n" +
+                             $"\nПериметр: {triangle.Perimetr()} " +
+                             $"\nПлощадь: {triangle.Square()}",
+                             "Результат", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void TriangleTypeChanged(object sender, EventArgs e)
@@ -111,6 +156,13 @@ namespace KP
             {
                 listBox1.Items.Remove(listBox1.SelectedItem);
             }
+        }
+
+        private void Clear()
+        {
+            txtBtn_A.Clear();
+            txtBtn_B.Clear();
+            txtBtn_Angle.Clear();
         }
     }
 }

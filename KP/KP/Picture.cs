@@ -19,11 +19,8 @@ namespace KP
 
         public void Remove(Triangle triangle) => Array.Remove(triangle);
 
-        public void Show()
-        {
-            
-        }
+        public void Show() { }
 
-        public double getSquare() => Array.Select(x => x.Square()).Sum();
+        public double SumSquare() => Array.Select(x => x.Square()).Sum();
     }
 }
