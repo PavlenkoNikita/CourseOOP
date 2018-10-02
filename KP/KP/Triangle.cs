@@ -6,16 +6,16 @@ using System.Threading.Tasks;
 
 namespace KP
 {
-    abstract class Triangle
+    public abstract class Triangle
     {
         private double angle;
 
-        protected string Name { get; set; }
-        protected double A { get; set; }
-        protected double B { get; set; }
-        protected double C { get; set; }
-        protected double Angle { get { return angle.ToRadians(); }
-                                 set {angle = value; } }
+        public string Type { get; protected set; }
+        public double A { get; protected set; }
+        public double B { get; protected set; }
+        public double C { get; protected set; }
+        public double Angle { get { return angle.ToRadians(); }
+                              protected set { angle = value; } }
 
         public Triangle() { }
          

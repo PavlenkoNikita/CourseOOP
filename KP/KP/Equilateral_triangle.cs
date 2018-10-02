@@ -8,9 +8,9 @@ namespace KP
 {
     class Equilateral_triangle : Triangle
     {
-        public Equilateral_triangle(string name, double a) : base(a, a, 60)
+        public Equilateral_triangle(double a) : base(a, a, 60)
         {
-            Name = name;
+            Type = "Равносторонний";
             C = a;
         }
 

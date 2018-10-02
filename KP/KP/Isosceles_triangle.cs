@@ -8,9 +8,9 @@ namespace KP
 {
     class Isosceles_triangle : Triangle
     {
-        public Isosceles_triangle(string name, double a, double angle) : base(a, a, angle)
+        public Isosceles_triangle(double a, double angle) : base(a, a, angle)
         {
-            Name = name;
+            Type = "Равнобедренный";
             C = Math.Sqrt(A * A + A * A - 2 * A * A * Math.Cos(Angle));
         }
 

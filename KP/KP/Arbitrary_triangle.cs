@@ -8,9 +8,9 @@ namespace KP
 {
     class Arbitrary_triangle : Triangle
     {
-        public Arbitrary_triangle(string name, double a, double b, double angle) : base(a, b, angle)
+        public Arbitrary_triangle(double a, double b, double angle) : base(a, b, angle)
         {
-            Name = name;
+            Type = "Произвольный";
             C = Math.Sqrt(A * A + B * B - 2 * A * B * Math.Cos(Angle));
         }
 

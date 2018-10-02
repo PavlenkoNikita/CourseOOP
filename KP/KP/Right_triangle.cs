@@ -8,9 +8,9 @@ namespace KP
 {
     class Right_triangle : Triangle
     {
-        public Right_triangle(string name, double a, double b) : base (a, b, 90) 
+        public Right_triangle(double a, double b) : base (a, b, 90) 
         {
-            Name = name;
+            Type = "Прямоугольный";
             C = Math.Sqrt(A * A + B * B);
         }
 
