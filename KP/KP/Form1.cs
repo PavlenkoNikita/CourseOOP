@@ -62,7 +62,7 @@ namespace KP
                 OutputCalcResult(new Arbitrary_triangle(a, b, angle));
             }
 
-            label_Sum.Text = picture.SumSquare().ToString("#.##");
+            label_Sum.Text = string.Format("{0:f2}", picture.SumSquare());
 
             Clear();
         }
@@ -154,7 +154,7 @@ namespace KP
             {
                 picture.Remove(listBox_Triangles.SelectedIndex);
                 listBox_Triangles.Items.Remove(listBox_Triangles.SelectedItem);
-                label_Sum.Text = picture.SumSquare().ToString("#.##");
+                label_Sum.Text = string.Format("{0:f2}", picture.SumSquare());
             }
         }
 

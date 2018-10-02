@@ -15,10 +15,10 @@ namespace KP
             return string.Format($"Тип треугольника: {triangle.Type}\n\n" +
                                  $"Сторона а: {triangle.A}\n" +
                                  $"Сторона b: {triangle.B}\n" +
-                                 $"Сторона c: {triangle.C.ToString("#.##")}\n" +
-                                 $"Угол между a и b: {(triangle.Angle * 180 / Math.PI).ToString("#.##")}°\n\n" +
-                                 $"Периметр: {triangle.Perimetr().ToString("#.##")}\n" +
-                                 $"Площадь: {triangle.Square().ToString("#.##")}");
+                                 $"Сторона c: {string.Format("{0:f2}", triangle.C)}\n" +
+                                 $"Угол между a и b: {string.Format("{0:f2}", triangle.Angle * 180 / Math.PI)}°\n\n" +
+                                 $"Периметр: {string.Format("{0:f2}", triangle.Perimetr())}\n" +
+                                 $"Площадь: {string.Format("{0:f2}", triangle.Square())}");
         }
     }
 }
