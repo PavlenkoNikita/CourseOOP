@@ -71,7 +71,7 @@ namespace KP
         {
             double check;
 
-            if (!double.TryParse(txtBtn_A.Text, out check) || !double.TryParse(txtBtn_B.Text, out check) || !double.TryParse(txtBtn_Angle.Text, out check))
+            if (!double.TryParse(txtBtn_A.Text, out check) || (txtBtn_B.Text != "" && !double.TryParse(txtBtn_B.Text, out check)) || (txtBtn_Angle.Text != "" && !double.TryParse(txtBtn_Angle.Text, out check)))
             {
                 MessageBox.Show("Некорректное значение при вводе.", "Ошибка", MessageBoxButtons.OKCancel, MessageBoxIcon.Error);
                 Clear();
@@ -85,7 +85,7 @@ namespace KP
                 return false;
             }
 
-            if (Convert.ToDouble(txtBtn_Angle.Text) >= 180)
+            if (txtBtn_Angle.Text != "" && Convert.ToDouble(txtBtn_Angle.Text) >= 180)
             {
                 MessageBox.Show("Значение величины угла должно быть меньше 180.", "Ошибка", MessageBoxButtons.OKCancel, MessageBoxIcon.Error);
                 txtBtn_Angle.Clear();
@@ -119,7 +119,7 @@ namespace KP
             else
             {
                 listBox1.Items.Add(nameTriangle + "(Произвольный)");
-                triangleInfo = "Произвольный треугольник со сторонами" + txtBtn_A.Text + " и " + txtBtn_B.Text + "." + " и углом между ними " + txtBtn_Angle.Text + "°.";
+                triangleInfo = "Произвольный треугольник со сторонами " + txtBtn_A.Text + " и " + txtBtn_B.Text + "." + " и углом между ними " + txtBtn_Angle.Text + "°.";
             }
 
             MessageBox.Show( $"{triangleInfo} \n" +
@@ -163,6 +163,11 @@ namespace KP
             txtBtn_A.Clear();
             txtBtn_B.Clear();
             txtBtn_Angle.Clear();
+        }
+
+        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            
         }
     }
 }
