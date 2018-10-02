@@ -14,7 +14,7 @@ namespace KP
     public partial class Form1 : Form
     {
         private int counter = 0;
-        string nameTriangle = "";
+        //string nameTriangle = "";
         private Regex format = new Regex(@"^\d+,?\d*$");
         Picture picture = new Picture();
 
@@ -31,27 +31,27 @@ namespace KP
             double b; 
             double angle;
 
-            nameTriangle = "Треугольник " + (++counter) + " ";
+            //nameTriangle = "Треугольник " + (++counter) + " ";
                         
             if (rdBtn_Equilateral.Checked)
             {
                 a = Convert.ToDouble(txtBtn_A.Text);
 
-                OutputCalcResult(new Equilateral_triangle(nameTriangle, a));
+                OutputCalcResult(new Equilateral_triangle(a));
             }
             else if (rdBtn_Isosceles.Checked)
             {
                 a = Convert.ToDouble(txtBtn_A.Text);
                 angle = Convert.ToDouble(txtBtn_Angle.Text);
 
-                OutputCalcResult(new Isosceles_triangle(nameTriangle, a, angle));
+                OutputCalcResult(new Isosceles_triangle(a, angle));
             }
             else if (rdBtn_Right.Checked)
             {
                 a = Convert.ToDouble(txtBtn_A.Text);
                 b = Convert.ToDouble(txtBtn_B.Text);
 
-                OutputCalcResult(new Right_triangle(nameTriangle, a, b));
+                OutputCalcResult(new Right_triangle(a, b));
             }
             else if (rdBtn_Arbitrary.Checked)
             {
@@ -59,7 +59,7 @@ namespace KP
                 b = Convert.ToDouble(txtBtn_B.Text);
                 angle = Convert.ToDouble(txtBtn_Angle.Text);
 
-                OutputCalcResult(new Arbitrary_triangle(nameTriangle, a, b, angle));
+                OutputCalcResult(new Arbitrary_triangle(a, b, angle));
             }
 
             label_Sum.Text = picture.SumSquare().ToString("#.##");
@@ -101,24 +101,22 @@ namespace KP
 
             string triangleInfo = "";
 
-            if(triangle is Equilateral_triangle)
+            listBox_Triangles.Items.Add($"Треугольник №{++counter} ({triangle.Type})");
+
+            if (triangle is Equilateral_triangle)
             {
-                listBox1.Items.Add(nameTriangle + "(Правильный)");
                 triangleInfo = "Равносторонний треугольник со стороной " + txtBtn_A.Text + ".";
             }
-            else if(triangle is Isosceles_triangle)
+            else if (triangle is Isosceles_triangle)
             {
-                listBox1.Items.Add(nameTriangle + "(Равнобедренный)");
                 triangleInfo = "Равнобедренный треугольник со сторонами " + txtBtn_A.Text + " и углом между ними " + txtBtn_Angle.Text + "°.";
             }
-            else if(triangle is Right_triangle)
+            else if (triangle is Right_triangle)
             {
-                listBox1.Items.Add(nameTriangle + "(Прямоугольный)");
                 triangleInfo = "Прямоугольный треугольник с катетами " + txtBtn_A.Text + " и " + txtBtn_B.Text + ".";
             }
             else
             {
-                listBox1.Items.Add(nameTriangle + "(Произвольный)");
                 triangleInfo = "Произвольный треугольник со сторонами " + txtBtn_A.Text + " и " + txtBtn_B.Text + "." + " и углом между ними " + txtBtn_Angle.Text + "°.";
             }
 
@@ -154,8 +152,19 @@ namespace KP
         {
             if (e.KeyCode == Keys.Delete)
             {
-                listBox1.Items.Remove(listBox1.SelectedItem);
+                picture.Remove(listBox_Triangles.SelectedIndex);
+                listBox_Triangles.Items.Remove(listBox_Triangles.SelectedItem);
+                label_Sum.Text = picture.SumSquare().ToString("#.##");
             }
+        }
+
+        private void listBox_Triangles_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            int index = listBox_Triangles.SelectedIndex;
+
+            if (index == -1) return;
+
+            MessageBox.Show(picture.Array[index].GetTriangleInfo(), "Информация", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
         }
 
         private void Clear()
@@ -163,11 +172,6 @@ namespace KP
             txtBtn_A.Clear();
             txtBtn_B.Clear();
             txtBtn_Angle.Clear();
-        }
-
-        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            
         }
     }
 }

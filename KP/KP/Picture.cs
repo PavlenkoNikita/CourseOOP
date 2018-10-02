@@ -17,7 +17,7 @@ namespace KP
 
         public void Add(Triangle triangle) => Array.Add(triangle);
 
-        public void Remove(Triangle triangle) => Array.Remove(triangle);
+        public void Remove(int index) => Array.Remove(Array[index]);
 
         public void Show() { }
 

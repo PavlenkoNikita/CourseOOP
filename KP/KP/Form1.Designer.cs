@@ -41,7 +41,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.listBox_Triangles = new System.Windows.Forms.ListBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label_Sum = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
@@ -183,16 +183,16 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Ввод";
             // 
-            // listBox1
+            // listBox_Triangles
             // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.ItemHeight = 16;
-            this.listBox1.Location = new System.Drawing.Point(13, 239);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(377, 164);
-            this.listBox1.TabIndex = 13;
-            this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
-            this.listBox1.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.listBox1_PreviewKeyDown);
+            this.listBox_Triangles.FormattingEnabled = true;
+            this.listBox_Triangles.ItemHeight = 16;
+            this.listBox_Triangles.Location = new System.Drawing.Point(13, 239);
+            this.listBox_Triangles.Name = "listBox_Triangles";
+            this.listBox_Triangles.Size = new System.Drawing.Size(377, 164);
+            this.listBox_Triangles.TabIndex = 13;
+            this.listBox_Triangles.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.listBox_Triangles_MouseDoubleClick);
+            this.listBox_Triangles.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.listBox1_PreviewKeyDown);
             // 
             // label4
             // 
@@ -206,7 +206,7 @@
             // label_Sum
             // 
             this.label_Sum.AutoSize = true;
-            this.label_Sum.Location = new System.Drawing.Point(234, 206);
+            this.label_Sum.Location = new System.Drawing.Point(243, 206);
             this.label_Sum.Name = "label_Sum";
             this.label_Sum.Size = new System.Drawing.Size(16, 17);
             this.label_Sum.TabIndex = 15;
@@ -219,7 +219,7 @@
             this.ClientSize = new System.Drawing.Size(406, 417);
             this.Controls.Add(this.label_Sum);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.listBox1);
+            this.Controls.Add(this.listBox_Triangles);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btn_OutputResult);
@@ -250,7 +250,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.ListBox listBox_Triangles;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label_Sum;
     }
