@@ -19,7 +19,17 @@ namespace KP
 
         public void Remove(int index) => Array.Remove(Array[index]);
 
-        public void Show() { }
+        public override string ToString()
+        {
+            string result = "";
+
+            for (int i = 0; i < Array.Count; i++)
+            {
+                result += $"{i + 1}) {MyExtensions.GetTriangleInfo(Array[i])}\n";
+            }
+            result += string.Format("\nСумма площадей треугольников:{0:f2}", SumSquare());
+            return result;
+        }
 
         public double SumSquare() => Array.Select(x => x.Square()).Sum();
     }

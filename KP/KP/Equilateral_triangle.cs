@@ -16,5 +16,6 @@ namespace KP
 
         public override double Square() => Math.Sqrt(3) * A * A / 4;
         public override double Perimetr() => A * 3;
+
     }
 }

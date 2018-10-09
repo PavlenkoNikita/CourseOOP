@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -14,51 +15,41 @@ namespace KP
     public partial class Form1 : Form
     {
         private int counter = 0;
-        //string nameTriangle = "";
         private Regex format = new Regex(@"^\d+,?\d*$");
         Picture picture = new Picture();
 
         public Form1()
         {
             InitializeComponent();
+#if DEBUG
+            Width = 534;
+#else 
+            Width = 324;
+#endif
         }
 
         private void btn_OutputResult_Click(object sender, EventArgs e)
         {
             if (!CheckInput()) return;
 
-            double a; 
-            double b; 
-            double angle;
+            double a = Convert.ToDouble(txtBtn_A.Text);
+            double b = Convert.ToDouble(txtBtn_B.Text);
+            double angle = Convert.ToDouble(txtBtn_Angle.Text);
 
-            //nameTriangle = "Треугольник " + (++counter) + " ";
-                        
-            if (rdBtn_Equilateral.Checked)
+            if (angle == 60 && a == b)
             {
-                a = Convert.ToDouble(txtBtn_A.Text);
-
                 OutputCalcResult(new Equilateral_triangle(a));
             }
-            else if (rdBtn_Isosceles.Checked)
+            else if (a == b)
             {
-                a = Convert.ToDouble(txtBtn_A.Text);
-                angle = Convert.ToDouble(txtBtn_Angle.Text);
-
                 OutputCalcResult(new Isosceles_triangle(a, angle));
             }
-            else if (rdBtn_Right.Checked)
+            else if (angle == 90)
             {
-                a = Convert.ToDouble(txtBtn_A.Text);
-                b = Convert.ToDouble(txtBtn_B.Text);
-
                 OutputCalcResult(new Right_triangle(a, b));
             }
-            else if (rdBtn_Arbitrary.Checked)
+            else
             {
-                a = Convert.ToDouble(txtBtn_A.Text);
-                b = Convert.ToDouble(txtBtn_B.Text);
-                angle = Convert.ToDouble(txtBtn_Angle.Text);
-
                 OutputCalcResult(new Arbitrary_triangle(a, b, angle));
             }
 
@@ -70,6 +61,12 @@ namespace KP
         private bool CheckInput()
         {
             double check;
+
+            if (txtBtn_A.Text == "" || txtBtn_B.Text == "" || txtBtn_Angle.Text == "")
+            {
+                MessageBox.Show("Одно из полей ввода пустое.", "Ошибка", MessageBoxButtons.OKCancel, MessageBoxIcon.Error);
+                return false;
+            }
 
             if (!double.TryParse(txtBtn_A.Text, out check) || (txtBtn_B.Text != "" && !double.TryParse(txtBtn_B.Text, out check)) || (txtBtn_Angle.Text != "" && !double.TryParse(txtBtn_Angle.Text, out check)))
             {
@@ -120,29 +117,21 @@ namespace KP
                 triangleInfo = "Произвольный треугольник со сторонами " + txtBtn_A.Text + " и " + txtBtn_B.Text + "." + " и углом между ними " + txtBtn_Angle.Text + "°.";
             }
 
-            MessageBox.Show( $"{triangleInfo} \n" +
+            MessageBox.Show($"{triangleInfo} \n" +
                              $"\nПериметр: {triangle.Perimetr()} " +
                              $"\nПлощадь: {triangle.Square()}",
                              "Результат", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
-        private void TriangleTypeChanged(object sender, EventArgs e)
-        {
-            txtBtn_B.Enabled = true;
-            txtBtn_Angle.Enabled = true;
-
-            if (rdBtn_Equilateral.Checked)
-            {
-                txtBtn_B.Enabled = false;
-                txtBtn_Angle.Enabled = false;
-            }
-            else if (rdBtn_Isosceles.Checked) txtBtn_B.Enabled = false;
-            else if (rdBtn_Right.Checked) txtBtn_Angle.Enabled = false;
-        }
-
         private void txtBtn_A_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!format.IsMatch(txtBtn_A.Text + e.KeyChar) && e.KeyChar != 8)
+            TextBox obj = sender as TextBox;
+            string checkStr = obj.Text + e.KeyChar;
+            if (!format.IsMatch(checkStr) && e.KeyChar != 8)
+            {
+                e.Handled = true;
+            }
+            if (char.IsDigit(e.KeyChar) && Convert.ToDouble(checkStr) > 100000)
             {
                 e.Handled = true;
             }
@@ -172,6 +161,17 @@ namespace KP
             txtBtn_A.Clear();
             txtBtn_B.Clear();
             txtBtn_Angle.Clear();
+        }
+
+        private void btn_saveInFile_Click(object sender, EventArgs e)
+        {
+
+            if (saveFileDialog.ShowDialog() == DialogResult.Cancel)
+            {
+                return;
+
+            }
+            File.WriteAllText(saveFileDialog.FileName, picture.ToString());
         }
     }
 }
