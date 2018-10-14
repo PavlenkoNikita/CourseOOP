@@ -6,13 +6,18 @@ using System.Threading.Tasks;
 
 namespace KP
 {
-    class Picture
+    public class Picture
     {
-        public List<Triangle> Array { private set; get; }
+        public List<Triangle> Array { get; private set; }
+
+        public List<string> Logs { get; set; }
+
 
         public Picture()
         {
             Array = new List<Triangle>();
+
+            Logs = new List<string>();
         }
 
         public void Add(Triangle triangle) => Array.Add(triangle);
@@ -27,7 +32,9 @@ namespace KP
             {
                 result += $"{i + 1}) {MyExtensions.GetTriangleInfo(Array[i])}\n";
             }
+
             result += string.Format("\nСумма площадей треугольников:{0:f2}", SumSquare());
+
             return result;
         }
 

@@ -17,15 +17,16 @@ namespace KP
         private int counter = 0;
         private Regex format = new Regex(@"^\d+,?\d*$");
         Picture picture = new Picture();
+        List<string> Logs;
 
         public Form1()
         {
             InitializeComponent();
-#if DEBUG
-            Width = 534;
-#else 
-            Width = 324;
-#endif
+//#if DEBUG
+//            Width = 682;
+//#else 
+//            Width = 250;
+//#endif
         }
 
         private void btn_OutputResult_Click(object sender, EventArgs e)
@@ -35,27 +36,42 @@ namespace KP
             double a = Convert.ToDouble(txtBtn_A.Text);
             double b = Convert.ToDouble(txtBtn_B.Text);
             double angle = Convert.ToDouble(txtBtn_Angle.Text);
+            Logs = picture.Logs;
 
             if (angle == 60 && a == b)
             {
-                OutputCalcResult(new Equilateral_triangle(a));
+                OutputCalcResult(new Equilateral_triangle(a, ref Logs));
             }
             else if (a == b)
             {
-                OutputCalcResult(new Isosceles_triangle(a, angle));
+                OutputCalcResult(new Isosceles_triangle(a, angle, ref Logs));
             }
             else if (angle == 90)
             {
-                OutputCalcResult(new Right_triangle(a, b));
+                OutputCalcResult(new Right_triangle(a, b, ref Logs));
             }
             else
             {
-                OutputCalcResult(new Arbitrary_triangle(a, b, angle));
+                OutputCalcResult(new Arbitrary_triangle(a, b, angle, ref Logs));
             }
 
             label_Sum.Text = string.Format("{0:f2}", picture.SumSquare());
 
+            OutputLogs();
+
             Clear();
+        }
+
+        public void OutputLogs()
+        {
+            listBox_Debug.Items.Clear();
+
+            for (var i = Logs.Count - 1; i > 0; i -= 2)
+            {
+                listBox_Debug.Items.Add(Logs[i - 1]);
+                listBox_Debug.Items.Add(Logs[i]);
+                listBox_Debug.Items.Add("=====================================================");
+            }
         }
 
         private bool CheckInput()
@@ -126,11 +142,14 @@ namespace KP
         private void txtBtn_A_KeyPress(object sender, KeyPressEventArgs e)
         {
             TextBox obj = sender as TextBox;
+
             string checkStr = obj.Text + e.KeyChar;
+
             if (!format.IsMatch(checkStr) && e.KeyChar != 8)
             {
                 e.Handled = true;
             }
+
             if (char.IsDigit(e.KeyChar) && Convert.ToDouble(checkStr) > 100000)
             {
                 e.Handled = true;
@@ -141,8 +160,14 @@ namespace KP
         {
             if (e.KeyCode == Keys.Delete)
             {
+                picture.Array[listBox_Triangles.SelectedIndex].Dispose(ref Logs);
+
+                OutputLogs();
+
                 picture.Remove(listBox_Triangles.SelectedIndex);
+
                 listBox_Triangles.Items.Remove(listBox_Triangles.SelectedItem);
+
                 label_Sum.Text = string.Format("{0:f2}", picture.SumSquare());
             }
         }
@@ -167,10 +192,8 @@ namespace KP
         {
 
             if (saveFileDialog.ShowDialog() == DialogResult.Cancel)
-            {
                 return;
 
-            }
             File.WriteAllText(saveFileDialog.FileName, picture.ToString());
         }
     }

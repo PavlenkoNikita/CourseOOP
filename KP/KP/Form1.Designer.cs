@@ -126,7 +126,7 @@
             // 
             this.listBox_Triangles.FormattingEnabled = true;
             this.listBox_Triangles.ItemHeight = 16;
-            this.listBox_Triangles.Location = new System.Drawing.Point(13, 239);
+            this.listBox_Triangles.Location = new System.Drawing.Point(13, 238);
             this.listBox_Triangles.Name = "listBox_Triangles";
             this.listBox_Triangles.Size = new System.Drawing.Size(285, 164);
             this.listBox_Triangles.TabIndex = 13;
@@ -136,7 +136,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(12, 205);
+            this.label4.Location = new System.Drawing.Point(12, 207);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(225, 17);
             this.label4.TabIndex = 14;
@@ -145,7 +145,7 @@
             // label_Sum
             // 
             this.label_Sum.AutoSize = true;
-            this.label_Sum.Location = new System.Drawing.Point(243, 206);
+            this.label_Sum.Location = new System.Drawing.Point(243, 207);
             this.label_Sum.Name = "label_Sum";
             this.label_Sum.Size = new System.Drawing.Size(16, 17);
             this.label_Sum.TabIndex = 15;
@@ -155,9 +155,9 @@
             // 
             this.listBox_Debug.FormattingEnabled = true;
             this.listBox_Debug.ItemHeight = 16;
-            this.listBox_Debug.Location = new System.Drawing.Point(313, 28);
+            this.listBox_Debug.Location = new System.Drawing.Point(317, 31);
             this.listBox_Debug.Name = "listBox_Debug";
-            this.listBox_Debug.Size = new System.Drawing.Size(193, 372);
+            this.listBox_Debug.Size = new System.Drawing.Size(431, 372);
             this.listBox_Debug.TabIndex = 16;
             // 
             // btn_saveInFile
@@ -173,7 +173,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(363, 8);
+            this.label5.Location = new System.Drawing.Point(484, 8);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(91, 17);
             this.label5.TabIndex = 18;
@@ -183,7 +183,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(514, 410);
+            this.ClientSize = new System.Drawing.Size(760, 415);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.btn_saveInFile);
             this.Controls.Add(this.listBox_Debug);
