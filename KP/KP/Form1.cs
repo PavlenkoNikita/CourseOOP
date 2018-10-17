@@ -22,11 +22,11 @@ namespace KP
         public Form1()
         {
             InitializeComponent();
-//#if DEBUG
-//            Width = 682;
-//#else 
-//            Width = 250;
-//#endif
+#if DEBUG
+            Width = 778;
+#else 
+            Width = 329;
+#endif
         }
 
         private void btn_OutputResult_Click(object sender, EventArgs e)
