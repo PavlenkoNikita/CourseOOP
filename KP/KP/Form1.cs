@@ -14,19 +14,20 @@ namespace KP
 {
     public partial class Form1 : Form
     {
-        private int counter = 0;
-        private Regex format = new Regex(@"^\d+,?\d*$");
-        Picture picture = new Picture();
-        List<string> Logs;
+        private int counter;
+        private Regex format;
+        private Picture picture;
+        private List<string> Logs;
+        private Random Rnd;
 
         public Form1()
         {
             InitializeComponent();
-#if DEBUG
-            Width = 778;
-#else 
-            Width = 329;
-#endif
+
+            counter = 0;
+            format = new Regex(@"^\d+,?\d*$");
+            picture = new Picture();
+            Rnd = new Random();
         }
 
         private void btn_OutputResult_Click(object sender, EventArgs e)
@@ -36,24 +37,8 @@ namespace KP
             double a = Convert.ToDouble(txtBtn_A.Text);
             double b = Convert.ToDouble(txtBtn_B.Text);
             double angle = Convert.ToDouble(txtBtn_Angle.Text);
-            Logs = picture.Logs;
 
-            if (angle == 60 && a == b)
-            {
-                OutputCalcResult(new Equilateral_triangle(a, ref Logs));
-            }
-            else if (a == b)
-            {
-                OutputCalcResult(new Isosceles_triangle(a, angle, ref Logs));
-            }
-            else if (angle == 90)
-            {
-                OutputCalcResult(new Right_triangle(a, b, ref Logs));
-            }
-            else
-            {
-                OutputCalcResult(new Arbitrary_triangle(a, b, angle, ref Logs));
-            }
+            TriangleTypeDefinition(a, b, angle);
 
             label_Sum.Text = string.Format("{0:f2}", picture.SumSquare());
 
@@ -118,19 +103,19 @@ namespace KP
 
             if (triangle is Equilateral_triangle)
             {
-                triangleInfo = "Равносторонний треугольник со стороной " + txtBtn_A.Text + ".";
+                triangleInfo = "Равносторонний треугольник со стороной " + triangle.A + ".";
             }
             else if (triangle is Isosceles_triangle)
             {
-                triangleInfo = "Равнобедренный треугольник со сторонами " + txtBtn_A.Text + " и углом между ними " + txtBtn_Angle.Text + "°.";
+                triangleInfo = "Равнобедренный треугольник со сторонами " + triangle.A + " и углом между ними " + triangle.Angle + "°.";
             }
             else if (triangle is Right_triangle)
             {
-                triangleInfo = "Прямоугольный треугольник с катетами " + txtBtn_A.Text + " и " + txtBtn_B.Text + ".";
+                triangleInfo = "Прямоугольный треугольник с катетами " + triangle.A + " и " + triangle.B + ".";
             }
             else
             {
-                triangleInfo = "Произвольный треугольник со сторонами " + txtBtn_A.Text + " и " + txtBtn_B.Text + "." + " и углом между ними " + txtBtn_Angle.Text + "°.";
+                triangleInfo = "Произвольный треугольник со сторонами " + triangle.A + " и " + triangle.B + "." + " и углом между ними " + triangle.Angle + "°.";
             }
 
             MessageBox.Show($"{triangleInfo} \n" +
@@ -160,6 +145,10 @@ namespace KP
         {
             if (e.KeyCode == Keys.Delete)
             {
+                if (listBox_Triangles.SelectedIndex == -1)
+                {
+                    return;
+                }
                 picture.Array[listBox_Triangles.SelectedIndex].Dispose(ref Logs);
 
                 OutputLogs();
@@ -195,6 +184,69 @@ namespace KP
                 return;
 
             File.WriteAllText(saveFileDialog.FileName, picture.ToString());
+        }
+
+        private void btn_GenData_Click(object sender, EventArgs e)
+        {
+            double a;
+            double b;
+            double angle;
+            int RndTriangle = Rnd.Next(1, 5);
+
+            if (RndTriangle == 1)
+            {
+                a = Rnd.Next(1, 500);
+                b = a;
+                angle = 60;
+            }
+            else if (RndTriangle == 2)
+            {
+                a = Rnd.Next(1, 500);
+                b = a;
+                angle = Rnd.Next(1, 179);
+            }
+            else if (RndTriangle == 3)
+            {
+                a = Rnd.Next(1, 500);
+                b = Rnd.Next(1, 500); ;
+                angle = 90;
+            }
+            else
+            {
+                a = Rnd.Next(1, 500);
+                b = Rnd.Next(1, 500);
+                angle = Rnd.Next(1, 179);
+            }
+
+            TriangleTypeDefinition(a, b, angle);
+
+            label_Sum.Text = string.Format("{0:f2}", picture.SumSquare());
+
+            OutputLogs();
+
+            Clear();
+        }
+
+        private void TriangleTypeDefinition(double a, double b, double angle)
+        {
+            Logs = picture.Logs;
+
+            if (angle == 60 && a == b)
+            {
+                OutputCalcResult(new Equilateral_triangle(a, ref Logs));
+            }
+            else if (a == b)
+            {
+                OutputCalcResult(new Isosceles_triangle(a, angle, ref Logs));
+            }
+            else if (angle == 90)
+            {
+                OutputCalcResult(new Right_triangle(a, b, ref Logs));
+            }
+            else
+            {
+                OutputCalcResult(new Arbitrary_triangle(a, b, angle, ref Logs));
+            }
         }
     }
 }
