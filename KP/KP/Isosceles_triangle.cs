@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Runtime.Serialization;
 
 namespace KP
 {
+    [DataContract(Name = "Isosceles")]
     class Isosceles_triangle : Triangle
     {
         public Isosceles_triangle(double a, double angle, ref List<string> logs) : base(a, a, angle, ref logs)

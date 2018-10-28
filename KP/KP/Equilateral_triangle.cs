@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Runtime.Serialization;
 
 namespace KP
 {
+    [DataContract(Name = "Equilateral")]
     class Equilateral_triangle : Triangle
     {
         public Equilateral_triangle(double a, ref List<string> logs) : base(a, a, 60, ref logs)

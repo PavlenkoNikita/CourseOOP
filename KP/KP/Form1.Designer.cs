@@ -44,13 +44,15 @@
             this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
             this.label5 = new System.Windows.Forms.Label();
             this.btn_GenData = new System.Windows.Forms.Button();
+            this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
+            this.btn_openFile = new System.Windows.Forms.Button();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // btn_OutputResult
             // 
             this.btn_OutputResult.Location = new System.Drawing.Point(178, 17);
-            this.btn_OutputResult.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_OutputResult.Margin = new System.Windows.Forms.Padding(2);
             this.btn_OutputResult.Name = "btn_OutputResult";
             this.btn_OutputResult.Size = new System.Drawing.Size(101, 42);
             this.btn_OutputResult.TabIndex = 3;
@@ -61,7 +63,7 @@
             // txtBtn_A
             // 
             this.txtBtn_A.Location = new System.Drawing.Point(69, 23);
-            this.txtBtn_A.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtBtn_A.Margin = new System.Windows.Forms.Padding(2);
             this.txtBtn_A.Name = "txtBtn_A";
             this.txtBtn_A.Size = new System.Drawing.Size(87, 20);
             this.txtBtn_A.TabIndex = 6;
@@ -70,7 +72,7 @@
             // txtBtn_B
             // 
             this.txtBtn_B.Location = new System.Drawing.Point(69, 45);
-            this.txtBtn_B.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtBtn_B.Margin = new System.Windows.Forms.Padding(2);
             this.txtBtn_B.Name = "txtBtn_B";
             this.txtBtn_B.Size = new System.Drawing.Size(87, 20);
             this.txtBtn_B.TabIndex = 7;
@@ -79,7 +81,7 @@
             // txtBtn_Angle
             // 
             this.txtBtn_Angle.Location = new System.Drawing.Point(69, 67);
-            this.txtBtn_Angle.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtBtn_Angle.Margin = new System.Windows.Forms.Padding(2);
             this.txtBtn_Angle.Name = "txtBtn_Angle";
             this.txtBtn_Angle.Size = new System.Drawing.Size(87, 20);
             this.txtBtn_Angle.TabIndex = 8;
@@ -124,9 +126,9 @@
             this.groupBox2.Controls.Add(this.txtBtn_Angle);
             this.groupBox2.Controls.Add(this.label1);
             this.groupBox2.Location = new System.Drawing.Point(11, 10);
-            this.groupBox2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(2);
             this.groupBox2.Size = new System.Drawing.Size(163, 95);
             this.groupBox2.TabIndex = 12;
             this.groupBox2.TabStop = false;
@@ -136,7 +138,7 @@
             // 
             this.listBox_Triangles.FormattingEnabled = true;
             this.listBox_Triangles.Location = new System.Drawing.Point(12, 179);
-            this.listBox_Triangles.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.listBox_Triangles.Margin = new System.Windows.Forms.Padding(2);
             this.listBox_Triangles.Name = "listBox_Triangles";
             this.listBox_Triangles.Size = new System.Drawing.Size(221, 147);
             this.listBox_Triangles.TabIndex = 13;
@@ -166,8 +168,8 @@
             // listBox_Debug
             // 
             this.listBox_Debug.FormattingEnabled = true;
-            this.listBox_Debug.Location = new System.Drawing.Point(294, 23);
-            this.listBox_Debug.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.listBox_Debug.Location = new System.Drawing.Point(293, 23);
+            this.listBox_Debug.Margin = new System.Windows.Forms.Padding(2);
             this.listBox_Debug.Name = "listBox_Debug";
             this.listBox_Debug.Size = new System.Drawing.Size(324, 303);
             this.listBox_Debug.TabIndex = 16;
@@ -175,9 +177,9 @@
             // btn_saveInFile
             // 
             this.btn_saveInFile.Location = new System.Drawing.Point(10, 109);
-            this.btn_saveInFile.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_saveInFile.Margin = new System.Windows.Forms.Padding(2);
             this.btn_saveInFile.Name = "btn_saveInFile";
-            this.btn_saveInFile.Size = new System.Drawing.Size(269, 42);
+            this.btn_saveInFile.Size = new System.Drawing.Size(130, 42);
             this.btn_saveInFile.TabIndex = 17;
             this.btn_saveInFile.Text = "Сохранить в файл";
             this.btn_saveInFile.UseVisualStyleBackColor = true;
@@ -204,11 +206,23 @@
             this.btn_GenData.UseVisualStyleBackColor = true;
             this.btn_GenData.Click += new System.EventHandler(this.btn_GenData_Click);
             // 
+            // btn_openFile
+            // 
+            this.btn_openFile.Location = new System.Drawing.Point(149, 109);
+            this.btn_openFile.Margin = new System.Windows.Forms.Padding(2);
+            this.btn_openFile.Name = "btn_openFile";
+            this.btn_openFile.Size = new System.Drawing.Size(130, 42);
+            this.btn_openFile.TabIndex = 20;
+            this.btn_openFile.Text = "Открыть файл";
+            this.btn_openFile.UseVisualStyleBackColor = true;
+            this.btn_openFile.Click += new System.EventHandler(this.btn_openFile_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(628, 337);
+            this.Controls.Add(this.btn_openFile);
             this.Controls.Add(this.btn_GenData);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.btn_saveInFile);
@@ -219,7 +233,7 @@
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.btn_OutputResult);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximizeBox = false;
             this.Name = "Form1";
             this.Text = "OOP";
@@ -247,6 +261,8 @@
         private System.Windows.Forms.SaveFileDialog saveFileDialog;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button btn_GenData;
+        private System.Windows.Forms.OpenFileDialog openFileDialog;
+        private System.Windows.Forms.Button btn_openFile;
     }
 }
 

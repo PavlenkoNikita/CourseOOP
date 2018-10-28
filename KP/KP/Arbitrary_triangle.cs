@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Runtime.Serialization;
 
 namespace KP
 {
+    [DataContract(Name = "Arbitrary")]
     class Arbitrary_triangle : Triangle
     {
         public Arbitrary_triangle(double a, double b, double angle, ref List<string> logs) : base(a, b, angle, ref logs)

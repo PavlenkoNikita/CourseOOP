@@ -1,25 +1,28 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+using System.Runtime.Serialization;
 
 namespace KP
 {
+    [DataContract]
+    [KnownType(typeof(Equilateral_triangle)),
+    KnownType(typeof(Isosceles_triangle)),
+    KnownType(typeof(Right_triangle)),
+    KnownType(typeof(Arbitrary_triangle))]
     public abstract class Triangle : IDisposable
     {
+        [DataMember]
         private double angle;
 
-
+        [DataMember]
         public string Type { get; protected set; }
-
+        [DataMember]
         public double A { get; protected set; }
-
+        [DataMember]
         public double B { get; protected set; }
-
+        [DataMember]
         public double C { get; protected set; }
-
+        
         public double Angle { get { return angle.ToRadians(); }
                               protected set { angle = value; } }
 
@@ -49,5 +52,9 @@ namespace KP
 
             Dispose();
         }
+    }
+
+    internal class DataContactAttribute : Attribute
+    {
     }
 }

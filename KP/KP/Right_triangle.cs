@@ -1,12 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+using System.Runtime.Serialization;
 
 namespace KP
 {
+    [DataContract(Name = "Right")]
     class Right_triangle : Triangle
     {
         public Right_triangle(double a, double b, ref List<string> logs) : base (a, b, 90, ref logs) 

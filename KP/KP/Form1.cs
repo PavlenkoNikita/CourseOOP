@@ -1,13 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.IO;
-using System.Linq;
-using System.Text;
+using System.Runtime.Serialization;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace KP
@@ -65,27 +59,27 @@ namespace KP
 
             if (txtBtn_A.Text == "" || txtBtn_B.Text == "" || txtBtn_Angle.Text == "")
             {
-                MessageBox.Show("Одно из полей ввода пустое.", "Ошибка", MessageBoxButtons.OKCancel, MessageBoxIcon.Error);
+                MessageBox.Show("Одно из полей ввода пустое.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
 
             if (!double.TryParse(txtBtn_A.Text, out check) || (txtBtn_B.Text != "" && !double.TryParse(txtBtn_B.Text, out check)) || (txtBtn_Angle.Text != "" && !double.TryParse(txtBtn_Angle.Text, out check)))
             {
-                MessageBox.Show("Некорректное значение при вводе.", "Ошибка", MessageBoxButtons.OKCancel, MessageBoxIcon.Error);
+                MessageBox.Show("Некорректное значение при вводе.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Clear();
                 return false;
             }
 
             if (txtBtn_A.Text == "0" || txtBtn_B.Text == "0")
             {
-                MessageBox.Show("Значение длины должно быть больше 0.", "Ошибка", MessageBoxButtons.OKCancel, MessageBoxIcon.Error);
+                MessageBox.Show("Значение длины должно быть больше 0.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Clear();
                 return false;
             }
 
             if (txtBtn_Angle.Text != "" && Convert.ToDouble(txtBtn_Angle.Text) >= 180)
             {
-                MessageBox.Show("Значение величины угла должно быть меньше 180.", "Ошибка", MessageBoxButtons.OKCancel, MessageBoxIcon.Error);
+                MessageBox.Show("Значение величины угла должно быть меньше 180.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtBtn_Angle.Clear();
                 return false;
             }
@@ -101,9 +95,10 @@ namespace KP
 
             listBox_Triangles.Items.Add($"Треугольник №{++counter} ({triangle.Type})");
 
+            
             if (triangle is Equilateral_triangle)
             {
-                triangleInfo = "Равносторонний треугольник со стороной " + triangle.A + ".";
+                triangleInfo = "Равносторонний треугольник со сторонами " + triangle.A + ".";
             }
             else if (triangle is Isosceles_triangle)
             {
@@ -167,7 +162,7 @@ namespace KP
 
             if (index == -1) return;
 
-            MessageBox.Show(picture.Array[index].GetTriangleInfo(), "Информация", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+            MessageBox.Show(picture.Array[index].GetTriangleInfo(), "Информация", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void Clear()
@@ -179,11 +174,15 @@ namespace KP
 
         private void btn_saveInFile_Click(object sender, EventArgs e)
         {
-
-            if (saveFileDialog.ShowDialog() == DialogResult.Cancel)
-                return;
-
-            File.WriteAllText(saveFileDialog.FileName, picture.ToString());
+            if (picture.Array.Count == 0)
+                MessageBox.Show("Нечего сохранять.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            else
+            {
+                saveFileDialog.Filter = "Json files (*.json)|*.json";
+                if (saveFileDialog.ShowDialog() == DialogResult.Cancel)
+                    return;
+                ReadWriteFile.WriteInFile(picture.Array, saveFileDialog.FileName);
+            }
         }
 
         private void btn_GenData_Click(object sender, EventArgs e)
@@ -246,6 +245,31 @@ namespace KP
             else
             {
                 OutputCalcResult(new Arbitrary_triangle(a, b, angle, ref Logs));
+            }
+        }
+
+        private void btn_openFile_Click(object sender, EventArgs e)
+        {
+            Logs = picture.Logs;
+            openFileDialog.Filter = "Json files (*.json)|*.json";
+            if (openFileDialog.ShowDialog() == DialogResult.Cancel)
+                return;
+            try
+            {
+                ReadWriteFile.ReadFile(ref listBox_Triangles, ref picture, ref counter, openFileDialog.FileName);
+                label_Sum.Text = string.Format("{0:f2}", picture.SumSquare());
+            }
+            catch (FileException error)
+            {
+                MessageBox.Show(error.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (SerializationException error)
+            {
+                MessageBox.Show("Считывание файла не удалось. Проверьте формат файла.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception error)
+            {
+                MessageBox.Show(error.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }
