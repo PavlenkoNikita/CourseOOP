@@ -172,7 +172,7 @@ namespace KP
             txtBtn_Angle.Clear();
         }
 
-        private void btn_saveInFile_Click(object sender, EventArgs e)
+        private void сохранитьToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (picture.Array.Count == 0)
                 MessageBox.Show("Нечего сохранять.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -185,7 +185,7 @@ namespace KP
             }
         }
 
-        private void btn_GenData_Click(object sender, EventArgs e)
+        private void сгенерироватьToolStripMenuItem_Click(object sender, EventArgs e)
         {
             double a;
             double b;
@@ -248,7 +248,7 @@ namespace KP
             }
         }
 
-        private void btn_openFile_Click(object sender, EventArgs e)
+        private void открытьФайлToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Logs = picture.Logs;
             openFileDialog.Filter = "Json files (*.json)|*.json";
