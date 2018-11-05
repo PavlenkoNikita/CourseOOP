@@ -53,10 +53,10 @@
             // 
             // btn_OutputResult
             // 
-            this.btn_OutputResult.Location = new System.Drawing.Point(54, 163);
-            this.btn_OutputResult.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btn_OutputResult.Location = new System.Drawing.Point(40, 132);
+            this.btn_OutputResult.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btn_OutputResult.Name = "btn_OutputResult";
-            this.btn_OutputResult.Size = new System.Drawing.Size(217, 52);
+            this.btn_OutputResult.Size = new System.Drawing.Size(163, 42);
             this.btn_OutputResult.TabIndex = 3;
             this.btn_OutputResult.Text = "Вычислить";
             this.btn_OutputResult.UseVisualStyleBackColor = true;
@@ -64,55 +64,58 @@
             // 
             // txtBtn_A
             // 
-            this.txtBtn_A.Location = new System.Drawing.Point(92, 28);
-            this.txtBtn_A.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtBtn_A.Location = new System.Drawing.Point(69, 23);
+            this.txtBtn_A.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtBtn_A.Name = "txtBtn_A";
-            this.txtBtn_A.Size = new System.Drawing.Size(183, 22);
+            this.txtBtn_A.Size = new System.Drawing.Size(138, 20);
             this.txtBtn_A.TabIndex = 6;
             this.txtBtn_A.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBtn_A_KeyPress);
             // 
             // txtBtn_B
             // 
-            this.txtBtn_B.Location = new System.Drawing.Point(92, 55);
-            this.txtBtn_B.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtBtn_B.Location = new System.Drawing.Point(69, 45);
+            this.txtBtn_B.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtBtn_B.Name = "txtBtn_B";
-            this.txtBtn_B.Size = new System.Drawing.Size(183, 22);
+            this.txtBtn_B.Size = new System.Drawing.Size(138, 20);
             this.txtBtn_B.TabIndex = 7;
             this.txtBtn_B.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBtn_A_KeyPress);
             // 
             // txtBtn_Angle
             // 
-            this.txtBtn_Angle.Location = new System.Drawing.Point(92, 82);
-            this.txtBtn_Angle.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtBtn_Angle.Location = new System.Drawing.Point(69, 67);
+            this.txtBtn_Angle.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtBtn_Angle.Name = "txtBtn_Angle";
-            this.txtBtn_Angle.Size = new System.Drawing.Size(183, 22);
+            this.txtBtn_Angle.Size = new System.Drawing.Size(138, 20);
             this.txtBtn_Angle.TabIndex = 8;
             this.txtBtn_Angle.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBtn_A_KeyPress);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(5, 32);
+            this.label1.Location = new System.Drawing.Point(4, 26);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(80, 17);
+            this.label1.Size = new System.Drawing.Size(61, 13);
             this.label1.TabIndex = 9;
             this.label1.Text = "Сторона a:";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(5, 59);
+            this.label2.Location = new System.Drawing.Point(4, 48);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(80, 17);
+            this.label2.Size = new System.Drawing.Size(61, 13);
             this.label2.TabIndex = 10;
             this.label2.Text = "Сторона b:";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(40, 86);
+            this.label3.Location = new System.Drawing.Point(30, 70);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(42, 17);
+            this.label3.Size = new System.Drawing.Size(35, 13);
             this.label3.TabIndex = 11;
             this.label3.Text = "Угол:";
             // 
@@ -124,11 +127,11 @@
             this.groupBox2.Controls.Add(this.label2);
             this.groupBox2.Controls.Add(this.txtBtn_Angle);
             this.groupBox2.Controls.Add(this.label1);
-            this.groupBox2.Location = new System.Drawing.Point(15, 39);
-            this.groupBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.groupBox2.Location = new System.Drawing.Point(11, 32);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.groupBox2.Size = new System.Drawing.Size(294, 117);
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox2.Size = new System.Drawing.Size(220, 95);
             this.groupBox2.TabIndex = 12;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Ввод";
@@ -136,11 +139,10 @@
             // listBox_Triangles
             // 
             this.listBox_Triangles.FormattingEnabled = true;
-            this.listBox_Triangles.ItemHeight = 16;
-            this.listBox_Triangles.Location = new System.Drawing.Point(16, 252);
-            this.listBox_Triangles.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.listBox_Triangles.Location = new System.Drawing.Point(12, 205);
+            this.listBox_Triangles.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.listBox_Triangles.Name = "listBox_Triangles";
-            this.listBox_Triangles.Size = new System.Drawing.Size(293, 148);
+            this.listBox_Triangles.Size = new System.Drawing.Size(221, 121);
             this.listBox_Triangles.TabIndex = 13;
             this.listBox_Triangles.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.listBox_Triangles_MouseDoubleClick);
             this.listBox_Triangles.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.listBox1_PreviewKeyDown);
@@ -148,37 +150,39 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(13, 222);
+            this.label4.Location = new System.Drawing.Point(10, 180);
+            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(225, 17);
+            this.label4.Size = new System.Drawing.Size(176, 13);
             this.label4.TabIndex = 14;
             this.label4.Text = "Сумма площадей треугольников:";
             // 
             // label_Sum
             // 
             this.label_Sum.AutoSize = true;
-            this.label_Sum.Location = new System.Drawing.Point(244, 222);
+            this.label_Sum.Location = new System.Drawing.Point(183, 180);
+            this.label_Sum.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label_Sum.Name = "label_Sum";
-            this.label_Sum.Size = new System.Drawing.Size(16, 17);
+            this.label_Sum.Size = new System.Drawing.Size(13, 13);
             this.label_Sum.TabIndex = 15;
             this.label_Sum.Text = "0";
             // 
             // listBox_Debug
             // 
             this.listBox_Debug.FormattingEnabled = true;
-            this.listBox_Debug.ItemHeight = 16;
-            this.listBox_Debug.Location = new System.Drawing.Point(324, 60);
-            this.listBox_Debug.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.listBox_Debug.Location = new System.Drawing.Point(243, 49);
+            this.listBox_Debug.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.listBox_Debug.Name = "listBox_Debug";
-            this.listBox_Debug.Size = new System.Drawing.Size(431, 340);
+            this.listBox_Debug.Size = new System.Drawing.Size(324, 277);
             this.listBox_Debug.TabIndex = 16;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(520, 39);
+            this.label5.Location = new System.Drawing.Point(390, 32);
+            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(39, 17);
+            this.label5.Size = new System.Drawing.Size(32, 13);
             this.label5.TabIndex = 18;
             this.label5.Text = "Логи";
             // 
@@ -191,36 +195,37 @@
             this.сгенерироватьToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(771, 28);
+            this.menuStrip1.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
+            this.menuStrip1.Size = new System.Drawing.Size(578, 24);
             this.menuStrip1.TabIndex = 19;
             this.menuStrip1.Text = "menuStrip1";
             // 
             // открытьФайлToolStripMenuItem
             // 
             this.открытьФайлToolStripMenuItem.Name = "открытьФайлToolStripMenuItem";
-            this.открытьФайлToolStripMenuItem.Size = new System.Drawing.Size(118, 24);
+            this.открытьФайлToolStripMenuItem.Size = new System.Drawing.Size(98, 20);
             this.открытьФайлToolStripMenuItem.Text = "Открыть файл";
             this.открытьФайлToolStripMenuItem.Click += new System.EventHandler(this.открытьФайлToolStripMenuItem_Click);
             // 
             // сохранитьToolStripMenuItem
             // 
             this.сохранитьToolStripMenuItem.Name = "сохранитьToolStripMenuItem";
-            this.сохранитьToolStripMenuItem.Size = new System.Drawing.Size(146, 24);
+            this.сохранитьToolStripMenuItem.Size = new System.Drawing.Size(118, 20);
             this.сохранитьToolStripMenuItem.Text = "Сохранить в файл";
             this.сохранитьToolStripMenuItem.Click += new System.EventHandler(this.сохранитьToolStripMenuItem_Click);
             // 
             // сгенерироватьToolStripMenuItem
             // 
             this.сгенерироватьToolStripMenuItem.Name = "сгенерироватьToolStripMenuItem";
-            this.сгенерироватьToolStripMenuItem.Size = new System.Drawing.Size(127, 24);
+            this.сгенерироватьToolStripMenuItem.Size = new System.Drawing.Size(102, 20);
             this.сгенерироватьToolStripMenuItem.Text = "Сгенерировать";
             this.сгенерироватьToolStripMenuItem.Click += new System.EventHandler(this.сгенерироватьToolStripMenuItem_Click);
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(771, 415);
+            this.ClientSize = new System.Drawing.Size(578, 337);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.listBox_Debug);
             this.Controls.Add(this.label_Sum);
@@ -231,7 +236,7 @@
             this.Controls.Add(this.menuStrip1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MainMenuStrip = this.menuStrip1;
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.MaximizeBox = false;
             this.Name = "Form1";
             this.Text = "OOP";

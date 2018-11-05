@@ -6,14 +6,11 @@ namespace KP
     public class Picture
     {
         public List<Triangle> Array { get; private set; }
-
         public List<string> Logs { get; set; }
-
 
         public Picture()
         {
             Array = new List<Triangle>();
-
             Logs = new List<string>();
         }
 

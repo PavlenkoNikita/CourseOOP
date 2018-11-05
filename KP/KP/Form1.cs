@@ -102,7 +102,7 @@ namespace KP
             }
             else if (triangle is Isosceles_triangle)
             {
-                triangleInfo = "Равнобедренный треугольник со сторонами " + triangle.A + " и углом между ними " + triangle.Angle + "°.";
+                triangleInfo = "Равнобедренный треугольник со сторонами " + triangle.A + " и углом между ними " + triangle.Angle * 180 / Math.PI + "°.";
             }
             else if (triangle is Right_triangle)
             {
@@ -110,7 +110,7 @@ namespace KP
             }
             else
             {
-                triangleInfo = "Произвольный треугольник со сторонами " + triangle.A + " и " + triangle.B + "." + " и углом между ними " + triangle.Angle + "°.";
+                triangleInfo = "Произвольный треугольник со сторонами " + triangle.A + " и " + triangle.B + "." + " и углом между ними " + triangle.Angle * 180 / Math.PI + "°.";
             }
 
             MessageBox.Show($"{triangleInfo} \n" +

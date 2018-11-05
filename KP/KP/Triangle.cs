@@ -26,7 +26,6 @@ namespace KP
         public double Angle { get { return angle.ToRadians(); }
                               protected set { angle = value; } }
 
-
         public Triangle() { }
          
         public Triangle(double a, double b, double angle, ref List<string> logs)
@@ -52,9 +51,5 @@ namespace KP
 
             Dispose();
         }
-    }
-
-    internal class DataContactAttribute : Attribute
-    {
     }
 }
