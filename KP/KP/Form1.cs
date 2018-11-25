@@ -70,16 +70,16 @@ namespace KP
                 return false;
             }
 
-            if (txtBtn_A.Text == "0" || txtBtn_B.Text == "0")
+            if(Convert.ToDouble(txtBtn_A.Text) <= 0 || Convert.ToDouble(txtBtn_B.Text) <= 0)
             {
-                MessageBox.Show("Значение длины должно быть больше 0.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Значение длины стороны должно быть больше 0.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Clear();
                 return false;
             }
 
-            if (txtBtn_Angle.Text != "" && Convert.ToDouble(txtBtn_Angle.Text) >= 180)
+            if (txtBtn_Angle.Text != "" && (Convert.ToDouble(txtBtn_Angle.Text) >= 180 || Convert.ToDouble(txtBtn_Angle.Text) <= 0))
             {
-                MessageBox.Show("Значение величины угла должно быть меньше 180.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Значение величины угла должно быть в диапазоне от 1 до 179.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtBtn_Angle.Clear();
                 return false;
             }
